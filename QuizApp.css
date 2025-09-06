@@ -1,0 +1,186 @@
+:root{
+  --bg-a: #5b6df6;
+  --bg-b: #7d4bbd;
+  --card: rgba(255,255,255,0.96);
+  --muted: #6b7280;
+  --accent: #5a67d8;
+  --accent-2: #6f3fa0;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.72);
+  --shadow-1: 0 8px 30px rgba(22,22,60,0.18);
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.03), transparent 10%),
+              linear-gradient(135deg,var(--bg-a),var(--bg-b));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Card */
+.quiz-container{
+  width:100%;
+  max-width:760px;
+  background: linear-gradient(180deg, var(--card), rgba(255,255,255,0.92));
+  border-radius:18px;
+  padding:28px;
+  box-shadow: var(--shadow-1);
+  border: 1px solid rgba(0,0,0,0.04);
+  backdrop-filter: blur(6px);
+}
+
+/* Header */
+.quiz-container h1{
+  margin:0 0 8px;
+  font-size:30px;
+  text-align:center;
+  color:#222;
+  letter-spacing:0.2px;
+  font-weight:700;
+}
+
+/* Subheading/help */
+.quiz-container p.lead{
+  margin:0 0 14px;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* Start/Resume area */
+.start-box{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin:18px 0 10px;
+  flex-wrap:wrap;
+}
+
+.start-box button{
+  background: linear-gradient(180deg,var(--accent-2),#5a3a8f);
+  color:#fff;
+  border:none;
+  padding:12px 22px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  letter-spacing:0.2px;
+  box-shadow: 0 8px 28px rgba(99,64,155,0.12);
+  transition: transform .16s ease, box-shadow .16s ease, opacity .12s;
+}
+.start-box button:hover{ transform: translateY(-4px); box-shadow: 0 14px 36px rgba(99,64,155,0.18) }
+
+/* Quiz area */
+.quiz-box{
+  margin-top:10px;
+  display:block; /* JS shows/hides the box */
+  padding:18px 12px 8px;
+  border-radius:12px;
+}
+
+/* Question */
+#question{
+  margin:6px 0 18px;
+  font-size:20px;
+  color:#1f2937;
+  text-align:center;
+  font-weight:700;
+  line-height:1.2;
+}
+
+/* Options layout: centered, wrap */
+.options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+  margin-bottom:10px;
+  transition: all .12s ease;
+}
+
+/* Option buttons */
+.options button{
+  background: linear-gradient(180deg,#6e7bf0,#5a67d8);
+  color:#fff;
+  border:0;
+  padding:10px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:15px;
+  min-width:110px;
+  text-align:center;
+  box-shadow: 0 8px 20px rgba(85,94,220,0.10);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+}
+.options button:hover{ transform: translateY(-4px); box-shadow: 0 16px 28px rgba(85,94,220,0.12) }
+.options button:disabled{ opacity:0.6; cursor:not-allowed; transform:none; box-shadow:none; }
+
+/* Correct / Wrong (apply from JS) */
+.options button.correct{
+  background: linear-gradient(90deg,#10b981,#16a34a);
+  box-shadow: 0 10px 30px rgba(16,185,129,0.12);
+}
+.options button.wrong{
+  background: linear-gradient(90deg,#ef4444,#fb923c);
+  box-shadow: 0 10px 30px rgba(239,68,68,0.12);
+}
+
+/* Controls row */
+.controls{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  margin-top:12px;
+}
+
+/* Next & Reset */
+#nextBtn, #resetBtn {
+  display:none; /* JS will show when needed */
+  border:0;
+  padding:10px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  color:#fff;
+  background: linear-gradient(180deg,var(--accent-2),#5a3a8f);
+  box-shadow: 0 10px 26px rgba(99,64,155,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+#nextBtn:hover, #resetBtn:hover{ transform: translateY(-4px) }
+
+/* Score area */
+.score{
+  margin-top:14px;
+  font-size:16px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* final message */
+.final {
+  margin-top:12px;
+  font-weight:800;
+  font-size:18px;
+  text-align:center;
+  color:#111827;
+}
+
+/* Small screen tweaks */
+@media (max-width:600px){
+  .quiz-container{ padding:18px; border-radius:14px }
+  #question{ font-size:18px }
+  .options button{ min-width:80px; padding:9px 12px; font-size:14px }
+  .start-box button{ padding:10px 14px }
+  #nextBtn, #resetBtn{ padding:9px 12px }
+}
